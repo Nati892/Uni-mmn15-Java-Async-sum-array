@@ -1,6 +1,4 @@
-import netscape.javascript.JSUtil;
 
-import java.util.Random;
 import java.util.Scanner;
 
 public class Summarizer {
@@ -22,6 +20,7 @@ public class Summarizer {
         SummarizeThread[] threadsArr = new SummarizeThread[threadsAmount];
         int[] myArr = new int[arrSize];
         initIntArr(myArr);
+        printArray(myArr);
         PoolMonitor monitor = new PoolMonitor(myArr);
 
         System.out.println("Summing it all up");
@@ -60,5 +59,14 @@ public class Summarizer {
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 100) + 1;
         }
+    }
+
+    private static void printArray(int[] arr) {
+        if (arr.length > 0)
+            System.out.print("\nPrinted array [" + arr[0]);
+        for (int i = 1; i < arr.length; i++) {
+            System.out.print("," + arr[i]);
+        }
+        System.out.println("]");
     }
 }
