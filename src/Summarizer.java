@@ -24,11 +24,12 @@ public class Summarizer {
         PoolMonitor monitor = new PoolMonitor(myArr);
 
         System.out.println("Summing it all up");
-        for (int i = 0; i < threadsArr.length; i++) {
+        for (int i = 0; i < threadsArr.length; i++) {//initialize threads
             threadsArr[i] = new SummarizeThread(monitor);
         }
 
-        for (int i = 0; i < threadsArr.length; i++) {
+
+        for (int i = 0; i < threadsArr.length; i++) {//start threads
             threadsArr[i].start();
         }
 
@@ -42,12 +43,11 @@ public class Summarizer {
         boolean good_input = false;
         while (!good_input) {
             try {
-                System.out.println("Please enter an integer");
                 res = Integer.parseInt(scanner.next());
                 if (res > 0)
                     good_input = true;
                 else
-                    System.out.println("The number must be bigger then zero");
+                    System.out.println("The number must be bigger then zero, please re-enter number");
             } catch (Exception e) {
                 System.out.println("Please re-enter integer");
             }
@@ -55,11 +55,13 @@ public class Summarizer {
         return res;
     }
 
-    private static void initIntArr(int[] arr) {
+
+    private static void initIntArr(int[] arr) {//initializes array with random positive numbers in range 1..100
         for (int i = 0; i < arr.length; i++) {
             arr[i] = (int) (Math.random() * 100) + 1;
         }
     }
+
 
     private static void printArray(int[] arr) {
         if (arr.length > 0)
